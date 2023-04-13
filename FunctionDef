@@ -1,0 +1,25 @@
+1. import: Import necessary libraries, including os, glob, datetime, platform, and zipfile. These libraries provide file system manipulation, file searching, date and time operations, system information retrieval, and zip file creation functionality.
+
+2. get_zip_files_today(desktop_path): This function takes the path of the user's desktop and constructs a search pattern for .zip files created today. It uses glob.glob() to search for files matching the pattern, and returns a list of found file paths.
+
+3. create_zip_folder(folder_path, zip_file_path): This function takes the path of a folder and a path for the output zip file. It creates a zip file with the specified path, and iterates through all files in the folder using os.walk(). For each file, it adds the file to the zip archive with a relative path using the zipfile library.
+
+4. main(): This function serves as the main entry point for the script.
+
+a. It retrieves the user's desktop path using os.path.expanduser("~") and os.path.join().
+
+b. It calls get_zip_files_today() to find all .zip files created today on the user's desktop.
+
+c. If no .zip files are found, it prints a message and returns.
+
+d. It formats the current date and retrieves the device name using datetime.datetime.now().strftime() and platform.node().
+
+e. It creates a new output folder on the user's desktop with the date and device name.
+
+f. For each found .zip file, it moves the file to the output folder using os.rename().
+
+g. It calls create_zip_folder() to create a zip archive of the output folder.
+
+h. Finally, it prints a message indicating the location of the created zip file.
+
+5. if __name__ == "__main__":: This line checks if the script is being run as the main program (not imported as a module). If the script is the main program, it calls the main() function to execute the operations.
